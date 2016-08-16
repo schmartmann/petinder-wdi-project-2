@@ -20,6 +20,7 @@
     "express-session": "^1.14.0",
     "mustache-express": "^1.2.2",
     "nodemon": "^1.10.0",
-    "pg-promise": "^5.2.7"
+    "pg-promise": "^5.2.7",
+    "require": "^2.4.20"
   }
 }
