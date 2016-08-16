@@ -21,6 +21,7 @@
     "mustache-express": "^1.2.2",
     "nodemon": "^1.10.0",
     "pg-promise": "^5.2.7",
+    "request": "^2.74.0",
     "require": "^2.4.20"
   }
 }
