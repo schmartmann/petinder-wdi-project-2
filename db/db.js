@@ -1,6 +1,5 @@
 const pgp = require('pg-promise')();
 const db = pgp(process.env.DATABASE_URL);
-var pry = require('pryjs')
 
 
 const bcrypt = require('bcrypt');
