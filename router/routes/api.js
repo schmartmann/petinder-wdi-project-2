@@ -7,7 +7,7 @@ const db = require('../../db/db');
 
 router.get('/findPet/:location', function (req, res){
   var location = req.params.location
-  var petfinder_api =xxxxx;
+  var petfinder_api = PETFINDER_API_KEY;
 
   request('http://api.petfinder.com/pet.getRandom?format=json&location='+location+'&output=full&key='+petfinder_api, function (error, response, body) {
     if (!error && response.statusCode == 200) {
