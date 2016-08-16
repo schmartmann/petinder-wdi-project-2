@@ -3,7 +3,6 @@ const router = express.Router();
 const request = require('request');
 const mustacheExpress = require('mustache-express');
 const db = require('../../db/db');
-var pry = require('pryjs')
 
 
 router.get("/", db.my_pets, function(req, res){
