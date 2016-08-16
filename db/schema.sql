@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS pets;
+DROP TABLE IF EXISTS mypets;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE,
+  password_digest VARCHAR(255)
+);
+
+CREATE TABLE pets (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  picture TEXT NOT NULL,
+  description TEXT NOT NULL,
+  pet_id INTEGER UNIQUE NOT NULL,
+  link TEXT NOT NULL
+);
+
+CREATE TABLE mypets (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  pet_id INTEGER REFERENCES pets(pet_id)
+)

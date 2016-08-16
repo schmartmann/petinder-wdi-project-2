@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Petinder</title>
+ </head>
+<body class="indigo lighten-5">
+  <nav class="blue lighten-2">
+    <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Petinder</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/pet">Find Pets</a></li>
+      <li><a href="/mypets">My Pets</a></li>
+      <li><a href="/sessions/logout">Log Out</a></li>
+    </ul>
+    </div>
+  </nav>
+<div class="container">
+   <div class="row">
+   <h3>MyPets</h3>
+   {{#myPets}}
+      <div id="pet-{{pet_id}}" class="col s8 m7">
+        <div id="pet-card" class="card hoverable blue lighten-5">
+          <div class="card-image">
+            <img id="pet-pic" src={{picture}}>
+            <span id="pet-name" class="card-title">{{name}}</span>
+          </div>
+          <div class="card-content">
+            <p id="desc" class="indigo-text text-darken-3">{{description}}</p>
+            <p class="indigo-text text-darken-3" id="mypets-pet-id">Pet ID: {{pet_id}}</p>
+          </div>
+          <div class="card-action">
+            <a id="petfinder-link" href={{link}} class="indigo-text text-darken-3">PetFinder Adption Link</a>
+            <p class="mypets-remove indigo-text text-darken-3">Remove Me From MyPets ;_;</p>
+            <p class="hidden">{{pet_id}}</p>
+          </div>
+        </div>
+      </div>
+    {{/myPets}}
+    </div>
+  </div>
+</body>
+</html>
+<script src="/js/jquery.js"></script>
+<script src="/js/script.js"></script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://fonts.googleapis.com/css?family=Cabin:600i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Petinder</title>
+ </head>
+<body class="indigo lighten-5">
+  <nav class="blue lighten-2">
+    <div class="nav-wrapper">
+    <a href="/" class="brand-logo center">Petinder</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/pet">Find Pets</a></li>
+      <li><a href="/mypets">My Pets</a></li>
+      <li><a href="/sessions/logout">Log Out</a></li>
+    </ul>
+    </div>
+  </nav>
+<div class="container">
+<h3>Enter your zip code to find pets near you!</h3>
+   <div class="row">
+   <br>
+    <div class="col s4">
+      <input class="input-field" placeholder ="Enter your ZIP code" id="location"></input>
+      <button class="btn waves-effect waves-light blue" type="submit" name="action" id="find-pets-button">Find Pets</button>
+      <br>
+      <br>
+      <button class="btn waves-effect waves-light blue" type="submit" name="action" id="add-to-mypets">Add To 'My Pets'</button>
+      <br>
+      <br>
+      <p id="add-pet-alert" class="indigo-text text-darken-3"></p>
+      </div>
+      <div class="col s8 m7">
+        <div id="pet-card" class="card hoverable blue lighten-5">
+          <div class="card-image">
+            <img id="pet-pic" src={{picture}}>
+            <span id="pet-name" class="card-title">{{name}}</span>
+          </div>
+          <div class="card-content">
+            <p id="desc" class="indigo-text text-darken-3 truncate">{{description}}</p>
+            <hr>
+            <p id="pet_id" class="indigo-text text-darken-3">Pet ID: {{pet_id}}</p>
+          </div>
+          <div class="card-action">
+            <a id="petfinder-link" href={{link}} class="indigo-text text-darken-3">View on PetFinder</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p id="user-name">{{email}}</p>
+</body>
+</html>
+<script src="/js/jquery.js"></script>
+<script src="/js/script.js"></script>
