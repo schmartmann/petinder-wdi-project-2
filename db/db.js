@@ -95,7 +95,7 @@ var add_pet = function(req, res, next){
 };
 
 var my_pets = function(req, res, next){
-  if(!req.session.user) res.redirect('/');
+  // if(!req.session.user) res.redirect('/');
   var user_id = req.session.user.id;
 
   console.log("MY PETS USER ID", user_id);
