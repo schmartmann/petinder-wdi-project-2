@@ -52,7 +52,6 @@ $("#add-to-mypets").on("click", function(event){
   event.preventDefault();
   var pet_id = $("#pet_id").text();
   var number = parseInt(pet_id.replace(/[^0-9\.]/g, ''), 10);
-  // debugger
   //pulled the above replace method off a stack overflow post
   $.ajax({
     "url" : "/add/"+number,

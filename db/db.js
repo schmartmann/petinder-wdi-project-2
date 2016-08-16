@@ -65,7 +65,7 @@ var create_user = function(req, res, next){
 };
 
 var save_pet = function(pet_data){
-  if(!req.session.user) res.redirect('/');
+  // if(!req.session.user.id) res.redirect('/');
    db.none(
     "INSERT INTO pets(name, picture, description, pet_id, link) VALUES ($1, $2, $3, $4, $5)",
     [pet_data[0], pet_data[1], pet_data[2], pet_data[3], pet_data[4]]).then(function(){
@@ -88,10 +88,6 @@ var display_pet = function(req, res, next){
 
 
 var add_pet = function(req, res, next){
-  if(!req.session.user) res.redirect('/');
-
-  var user_id = req.session.user;
-  var pet_id = current_pet_id;
   db.none("INSERT INTO mypets(user_id, pet_id) VALUES($1, $2)",
     [user_id, pet_id]).then(function(){
     console.log("successfully added by user", user_id)
@@ -101,7 +97,7 @@ var add_pet = function(req, res, next){
 
 var my_pets = function(req, res, next){
   if(!req.session.user) res.redirect('/');
-  var user_id = req.session.user;
+  var user_id = req.session.user.id;
 
   console.log("MY PETS USER ID", user_id);
   db.any(

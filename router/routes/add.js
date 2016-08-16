@@ -7,8 +7,11 @@ const db = require('../../db/db');
 
 
 router.post("/:id", function(req, res){
-  var id = req.params.id;
-  db.add_pet()
+  console.log("sessionid", req.session.user.id)
+  console.log("params", req.params.id)
+  user_id = req.session.user.id;
+  pet_id = req.params.id;
+  db.add_pet(user_id, pet_id)
 })
 
 
