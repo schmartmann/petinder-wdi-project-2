@@ -19,6 +19,6 @@ CREATE TABLE pets (
 
 CREATE TABLE mypets (
   id SERIAL PRIMARY KEY,
-  email VARCHAR(255) NOT NULL,
+  user_id INTEGER REFERENCES users(id),
   pet_id INTEGER REFERENCES pets(pet_id)
 )

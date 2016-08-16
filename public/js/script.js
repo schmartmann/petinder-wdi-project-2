@@ -75,15 +75,9 @@ $(".mypets-remove").on("click", function(event){
 
   promise.fail( function(){
     console.log('IM FAILING.')
-    //worst case put the DOM manip here
-    // console.log($this.parent())
-    // debugger;
-    // window.alert("FAIL");
-    // console.log("FAIL")
   });
 
   promise.done( function(){
-   // window.alert("success");
     $('#pet-' + pet_id).fadeOut();
   })
 })
