@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')();
-const db = pgp('postgres://dasboogaloo@localhost:5432/auth');
+const db = pgp(process.env.DATABASE_URL);
 var pry = require('pryjs')
 
 
