@@ -6,7 +6,10 @@ window.onload = function(event){
   function alertMyPosition(position) {
       console.log("Your position is "+position.coords.latitude+", "+position.coords.longitude);
       var coordinates = position;
-      console.log(coordinates)
+      $.ajax({
+        "url" : "/api/location/"+coordinates,
+        "method":"GET"
+      })
   };
   function noLocation(error) {
       console.log("No location info available. Error code: " + error.code);
