@@ -1,7 +1,7 @@
 "use strict";
 $(function(){
 
-console.log("CURRENTLY LOCATED AT", location)
+// console.log("CURRENTLY LOCATED AT", location)
 
 $("#find-pets-button").on("click", function(event){
   event.preventDefault();
