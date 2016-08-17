@@ -14,19 +14,19 @@ window.onload = function(event){
         "success" : function(location_data){
           console.log("current location", location_data);
           var geolocation = Number(location_data.zip);
-          debugger
+          // debugger
               $.ajax({
                 "url" : "/api/findPet/"+geolocation,
                 "method" : "GET",
                 "success" : function(pet_data){
                   var pet_id = pet_data[3];
-                  debugger;
+                  // debugger;
                     $.ajax({
                       "url" : "/pet/"+pet_id,
                       "method" : "GET",
                       "success" : function(show_pet_data){
                         $("#pet-card").show();
-                          debugger;
+                          // debugger;
                         window.location.replace('/pet/'+pet_id);
                         event.preventDefault();
                       },
