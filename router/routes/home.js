@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/api/location', function (req, res){
+router.get('/', function (req, res){
   if(!req.session.user){
     res.redirect('sessions/new');
   } else {

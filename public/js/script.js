@@ -3,7 +3,7 @@ $(function(){
 
 window.onload = function(){
   $.ajax({
-    "url" : "/location",
+    "url" : "/api/location",
     "method" : "GET",
     "success" : function(){
       console.log("geolocation successful")
