@@ -6,7 +6,7 @@ const db = require('../../db/db');
 
 
 router.get('/location/:latlong', function(req, res){
-  console.log(req.params);
+  console.log(req.body);
   // request('https://maps.googleapis.com/maps/api/geocode/json?latlng=40.756057399999996,-73.9192894&key='+process.env.GOOGLE_GEOLOCATE_API,
   // function(error, response, body){
   //   if (!error && response.statusCode == 200) {

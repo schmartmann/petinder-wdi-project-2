@@ -6,6 +6,7 @@ window.onload = function(event){
   function alertMyPosition(position) {
       console.log("Your position is "+position.coords.latitude+", "+position.coords.longitude);
       var latlong = position.coords.latitude+","+position.coords.longitude
+      console.log(latlong)
       $.ajax({
         "url" : "/api/location/"+latlong,
         "method":"GET",
