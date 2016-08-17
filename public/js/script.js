@@ -1,7 +1,6 @@
 "use strict";
 $(function(){
 
-var location=0;
 console.log("CURRENTLY LOCATED AT", location)
 
 window.onload = function(event){
@@ -15,6 +14,30 @@ window.onload = function(event){
         "success" : function(data){
           console.log("current location", data);
           location = data;
+
+              $.ajax({
+                "url" : "/api/findPet/"+location,
+                "method" : "GET",
+                "success" : function(data){
+                  var pet_id = data[3];
+
+                    $.ajax({
+                      "url" : "/pet/"+pet_id,
+                      "method" : "GET",
+                      "success" : function(data){
+                        $("#pet-card").show();
+                        window.location.replace('/pet/'+pet_id);
+                        event.preventDefault();
+                      },
+                      "error" : function(message){
+                        console.log(message)
+                      }
+                    })
+                },
+                "error" : function(message){
+                  console.log(message)
+                }
+              })
         },
         "error": function(){
           console.log("geolocation failed")
@@ -33,45 +56,45 @@ $("#desc").on('click', function(){
 })
 
 
-$("#find-pets-button").on('click', function(event){
-  event.preventDefault();
-  var location = $("#location").val();
-  console.log(location.length)
-  if (location.length < 5){
-    $("#location").addClass('location-bad')
-    $("#location").val("Sorry! Zip code invalid!")
-  } else {
-    $.ajax({
-      "url" : "/api/findPet/"+location,
-      "method" : "GET",
-      "success" : function(data){
-        var pet_id = data[3];
-          $.ajax({
-            "url" : "/pet/"+pet_id,
-            "method" : "GET",
-            "success" : function(data){
-              $("#pet-card").show();
-              window.location.replace('/pet/'+pet_id);
-              event.preventDefault();
-            },
-            "error" : function(message){
-              console.log(message)
-            }
-          })
-      },
-      "error" : function(message){
-        console.log(message)
-      }
-    })
-  }
-})
+// $("#find-pets-button").on('click', function(event){
+//   event.preventDefault();
+//   var location = $("#location").val();
+//   console.log(location.length)
+//   if (location.length < 5){
+//     $("#location").addClass('location-bad')
+//     $("#location").val("Sorry! Zip code invalid!")
+//   } else {
+//     $.ajax({
+//       "url" : "/api/findPet/"+location,
+//       "method" : "GET",
+//       "success" : function(data){
+//         var pet_id = data[3];
+//           $.ajax({
+//             "url" : "/pet/"+pet_id,
+//             "method" : "GET",
+//             "success" : function(data){
+//               $("#pet-card").show();
+//               window.location.replace('/pet/'+pet_id);
+//               event.preventDefault();
+//             },
+//             "error" : function(message){
+//               console.log(message)
+//             }
+//           })
+//       },
+//       "error" : function(message){
+//         console.log(message)
+//       }
+//     })
+//   }
+// })
 
-$("#location").on("click", function(){
-  if($("#location").hasClass('location-bad')){
-    $("#location").removeClass('location-bad');
-    $("#location").val(" ");
-  }
-})
+// $("#location").on("click", function(){
+//   if($("#location").hasClass('location-bad')){
+//     $("#location").removeClass('location-bad');
+//     $("#location").val(" ");
+//   }
+// })
 
 
 $("#add-to-mypets").on("click", function(event){
