@@ -5,6 +5,19 @@ const mustacheExpress = require('mustache-express');
 const db = require('../../db/db');
 
 
+router.get('/location', function(req, res){
+  request('https://www.googleapis.com/geolocation/v1/geolocate?key='+process.env.GOOGLE_GEOLOCATE_API),
+  function(error, response, body){
+    if (!error && response.statusCode == 200) {
+      var data = body;
+      console.log(data)
+    }
+  }
+})
+
+
+
+
 router.get('/findPet/:location', function (req, res){
   var location = req.params.location
   var petfinder_api = process.env.PETFINDER_API_KEY;

@@ -1,7 +1,17 @@
 "use strict";
 $(function(){
 
-//
+window.onload = function(){
+  $.ajax({
+    "url" : "/location",
+    "method" : "GET",
+    "success" : function(){
+      console.log("geolocation successful")
+    }
+  })
+}
+
+
 $("#desc").on('click', function(){
   $("#desc").removeClass('truncate')
 })
