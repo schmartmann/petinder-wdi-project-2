@@ -28,7 +28,7 @@ window.onload = function(event){
                         $("#pet-card").show();
                           debugger;
                         event.preventDefault();
-                        // window.location.replace('/pet/'+pet_id);
+                        window.location.replace('/pet/'+pet_id);
                       },
                       "error" : function(message){
                         console.log(message)
