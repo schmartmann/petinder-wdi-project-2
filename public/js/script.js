@@ -1,17 +1,16 @@
 "use strict";
 $(function(){
 
-function alertMyPosition(position) {
-    alert("Your position is " + position.coords.latitude + ", " + position.coords.longitude);
-}
-
-function noLocation(error) {
-    alert("No location info available. Error code: " + error.code);
-}
-
 window.onload = function(event){
   event.preventDefault();
+  function alertMyPosition(position) {
+      console.log("Your position is " + position.coords.latitude + ", " + position.coords.longitude);
+  };
+  function noLocation(error) {
+      console.log("No location info available. Error code: " + error.code);
+  };
   $.geolocation.get({win: alertMyPosition, fail: noLocation});
+  console.log("this is the data", position.coords.latitude, position.coords.longitude)
 }
 
 
