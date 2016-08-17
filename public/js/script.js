@@ -14,19 +14,21 @@ window.onload = function(event){
         "success" : function(data){
           console.log("current location", data);
           location = data;
-
+          debugger;
               $.ajax({
                 "url" : "/api/findPet/"+location,
                 "method" : "GET",
                 "success" : function(data){
                   var pet_id = data[3];
+                  debugger;
                     $.ajax({
                       "url" : "/pet/"+pet_id,
                       "method" : "GET",
                       "success" : function(data){
                         $("#pet-card").show();
-                        window.location.replace('/pet/'+pet_id);
+                          debugger;
                         event.preventDefault();
+                        window.location.replace('/pet/'+pet_id);
                       },
                       "error" : function(message){
                         console.log(message)
