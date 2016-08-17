@@ -4,16 +4,18 @@ const request = require('request');
 const mustacheExpress = require('mustache-express');
 const db = require('../../db/db');
 
+var location;
 
-router.get('/location/:latlong', function(req, res){
-  console.log(req.body);
-  // request('https://maps.googleapis.com/maps/api/geocode/json?latlng=40.756057399999996,-73.9192894&key='+process.env.GOOGLE_GEOLOCATE_API,
-  // function(error, response, body){
-  //   if (!error && response.statusCode == 200) {
-  //     var data = body;
-  //     console.log(data)
-  //   }
-  // })
+router.get('/location/:latlng', function(req, res){
+  console.log(req.params.latlng);
+  var latlng = req.params.latlng;
+  request('https://maps.googleapis.com/maps/api/geocode/json?latlng='+latlng+'&key='+process.env.GOOGLE_GEOLOCATE_API,
+  function(error, response, body){
+    if (!error && response.statusCode == 200) {
+      var data = body;
+      console.log(data)
+    }
+  })
 })
 
 
