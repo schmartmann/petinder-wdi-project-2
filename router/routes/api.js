@@ -12,15 +12,15 @@ router.get("/location/:latlng", function(req, res){
       var data = JSON.parse(body);
       var location = data.results[0].address_components[7].short_name;
       console.log("CURRENT ZIP", location);
-      res.send({"location":location})
+      res.send({"zip":location})
     }
   })
 })
 
 
 
-router.get('/findPet/:location', function (req, res){
-  var location = req.params.location
+router.get('/findPet/:geolocation', function (req, res){
+  var location = req.params.geolocation
   var petfinder_api = process.env.PETFINDER_API_KEY;
 
   request('http://api.petfinder.com/pet.getRandom?format=json&location='+location+'&output=full&key='+petfinder_api, function (error, response, body) {

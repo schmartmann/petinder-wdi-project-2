@@ -13,10 +13,10 @@ window.onload = function(event){
         "method":"GET",
         "success" : function(location_data){
           console.log("current location", location_data);
-          location = location_data;
+          var geolocation = Number(location_data.zip);
           debugger
               $.ajax({
-                "url" : "/api/findPet/"+location,
+                "url" : "/api/findPet/"+geolocation,
                 "method" : "GET",
                 "success" : function(pet_data){
                   var pet_id = pet_data[3];
