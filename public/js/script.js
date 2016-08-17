@@ -27,7 +27,7 @@ window.onload = function(event){
                       "success" : function(show_pet_data){
                         $("#pet-card").show();
                           // debugger;
-                        window.location.replace('/pet/'+pet_id);
+                        // window.location.replace('/pet/'+pet_id);
                         event.preventDefault();
                       },
                       "error" : function(message){
