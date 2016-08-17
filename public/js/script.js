@@ -5,10 +5,9 @@ window.onload = function(event){
   event.preventDefault();
   function alertMyPosition(position) {
       console.log("Your position is "+position.coords.latitude+", "+position.coords.longitude);
-      var coordinates = position;
-      console.log(coordinates)
+      var latlong = position.coords.latitude+","+position.coords.longitude
       $.ajax({
-        "url" : "/api/location/"+coordinates,
+        "url" : "/api/location/"+latlong,
         "method":"GET",
         "success" : function(){
           console.log("geo location successfully executed")
