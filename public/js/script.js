@@ -11,24 +11,24 @@ window.onload = function(event){
       $.ajax({
         "url" : "/api/location/"+latlng,
         "method":"GET",
-        "success" : function(data){
-          console.log("current location", data);
-          location = data;
+        "success" : function(location_data){
+          console.log("current location", location_data);
+          location = location_data;
           debugger;
               $.ajax({
                 "url" : "/api/findPet/"+location,
                 "method" : "GET",
-                "success" : function(data){
-                  var pet_id = data[3];
+                "success" : function(pet_data){
+                  var pet_id = pet_data[3];
                   debugger;
                     $.ajax({
                       "url" : "/pet/"+pet_id,
                       "method" : "GET",
-                      "success" : function(data){
+                      "success" : function(show_pet_data){
                         $("#pet-card").show();
                           debugger;
                         event.preventDefault();
-                        // window.location.replace('/pet/'+pet_id);
+                        window.location.replace('/pet/'+pet_id);
                       },
                       "error" : function(message){
                         console.log(message)
