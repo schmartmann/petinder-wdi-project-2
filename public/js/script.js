@@ -55,8 +55,8 @@ $("#find-pets-button").on("click", function(event){
 
 
 
-$("#desc").on('click', function(){
-  $("#desc").removeClass('truncate')
+$(".desc").on('click', function(){
+  $(".desc").removeClass('truncate')
 })
 
 
