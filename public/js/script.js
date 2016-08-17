@@ -3,99 +3,58 @@ $(function(){
 
 console.log("CURRENTLY LOCATED AT", location)
 
-window.onload = function(event){
-  event.preventDefault();
-  function alertMyPosition(position) {
-      console.log("Your position is "+position.coords.latitude+", "+position.coords.longitude);
-      var latlng = position.coords.latitude+","+position.coords.longitude
-      $.ajax({
-        "url" : "/api/location/"+latlng,
-        "method":"GET",
-        "success" : function(location_data){
-          console.log("current location", location_data);
-          var geolocation = Number(location_data.zip);
-          // debugger
-              $.ajax({
-                "url" : "/api/findPet/"+geolocation,
-                "method" : "GET",
-                "success" : function(pet_data){
-                  var pet_id = pet_data[3];
-                  // debugger;
-                    $.ajax({
-                      "url" : "/pet/"+pet_id,
-                      "method" : "GET",
-                      "success" : function(show_pet_data){
-                        $("#pet-card").show();
-                          // debugger;
-                        // window.location.replace('/pet/'+pet_id);
-                        event.preventDefault();
-                      },
-                      "error" : function(message){
-                        console.log(message)
-                      }
-                    })
-                },
-                "error" : function(message){
-                  console.log(message)
-                }
-              })
-        },
-        "error": function(){
-          console.log("geolocation failed")
-        }
-      })
-  };
-  function noLocation(error) {
-      console.log("No location info available. Error code: " + error.code);
-  };
-  $.geolocation.get({win: alertMyPosition, fail: noLocation});
-}
+function alertMyPosition(position) {
+    console.log("Your position is "+position.coords.latitude+
+      ", "+position.coords.longitude);
+    var latlng = position.coords.latitude+
+    ","+position.coords.longitude
+    $.ajax({
+      "url" : "/api/location/"+latlng,
+      "method":"GET",
+      "success" : function(location_data){
+        console.log("current location", location_data);
+        var geolocation = Number(location_data.zip);
+        // debugger
+            $.ajax({
+              "url" : "/api/findPet/"+geolocation,
+              "method" : "GET",
+              "success" : function(pet_data){
+                var pet_id = pet_data[3];
+                // debugger;
+                  $.ajax({
+                    "url" : "/pet/"+pet_id,
+                    "method" : "GET",
+                    "success" : function(show_pet_data){
+                      $("#pet-card").show();
+                        // debugger;
+                      window.location.replace('/pet/'+pet_id);
+                      event.preventDefault();
+                    },
+                    "error" : function(message){
+                      console.log(message)
+                    }
+                  })
+              },
+              "error" : function(message){
+                console.log(message)
+              }
+            })
+      },
+      "error": function(){
+        console.log("geolocation failed")
+      }
+    })
+};
+function noLocation(error) {
+    console.log("No location info available. Error code: " + error.code);
+};
+$.geolocation.get({win: alertMyPosition, fail: noLocation});
 
 
 $("#desc").on('click', function(){
   $("#desc").removeClass('truncate')
 })
 
-
-// $("#find-pets-button").on('click', function(event){
-//   event.preventDefault();
-//   var location = $("#location").val();
-//   console.log(location.length)
-//   if (location.length < 5){
-//     $("#location").addClass('location-bad')
-//     $("#location").val("Sorry! Zip code invalid!")
-//   } else {
-//     $.ajax({
-//       "url" : "/api/findPet/"+location,
-//       "method" : "GET",
-//       "success" : function(data){
-//         var pet_id = data[3];
-//           $.ajax({
-//             "url" : "/pet/"+pet_id,
-//             "method" : "GET",
-//             "success" : function(data){
-//               $("#pet-card").show();
-//               window.location.replace('/pet/'+pet_id);
-//               event.preventDefault();
-//             },
-//             "error" : function(message){
-//               console.log(message)
-//             }
-//           })
-//       },
-//       "error" : function(message){
-//         console.log(message)
-//       }
-//     })
-//   }
-// })
-
-// $("#location").on("click", function(){
-//   if($("#location").hasClass('location-bad')){
-//     $("#location").removeClass('location-bad');
-//     $("#location").val(" ");
-//   }
-// })
 
 
 $("#add-to-mypets").on("click", function(event){
