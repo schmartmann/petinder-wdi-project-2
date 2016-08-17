@@ -20,7 +20,6 @@ window.onload = function(event){
                 "method" : "GET",
                 "success" : function(data){
                   var pet_id = data[3];
-
                     $.ajax({
                       "url" : "/pet/"+pet_id,
                       "method" : "GET",

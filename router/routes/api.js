@@ -13,7 +13,7 @@ router.get("/location/:latlng", function(req, res){
       var data = JSON.parse(body);
       var location = data.results[0].address_components[7].short_name;
       console.log("CURRENT ZIP", location);
-      res.send(location)
+      res.location = location
     }
   })
 })
