@@ -10,6 +10,7 @@ router.get("/location/:latlng", function(req, res){
   request("https://maps.googleapis.com/maps/api/geocode/json?latlng="+latlng+"&key="+process.env.GOOGLE_GEOLOCATE_API, function(error, response, body){
     if (!error && response.statusCode == 200) {
       var data = JSON.parse(body);
+      console.log(data.results[0].formatted_address)
       var location = data.results[0].address_components[8].short_name;
       console.log("CURRENT ZIP", location);
       res.send({"zip":location})
