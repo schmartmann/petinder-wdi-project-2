@@ -1,6 +1,9 @@
 "use strict";
 $(function(){
 
+var location=0;
+console.log("CURRENTLY LOCATED AT", location)
+
 window.onload = function(event){
   event.preventDefault();
   function alertMyPosition(position) {
@@ -11,6 +14,7 @@ window.onload = function(event){
         "method":"GET",
         "success" : function(data){
           console.log("current location", data);
+          location = data;
         },
         "error": function(){
           console.log("geolocation failed")
