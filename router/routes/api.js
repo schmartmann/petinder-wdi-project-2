@@ -16,6 +16,8 @@ router.get("/location/:latlng", function(req, res){
       if (addArr[length-1] = "Canada"){
         var postalCode = (addArr[addArr.length-2]).split("").splice(2,6);
         var geolocation = postalCode;
+        console.log("CURRENT POSTAL CODE", geolocation);
+        res.send({"zip":geolocation})
       } else {
       var zipPos = addArr[addArr.length-2];
       var geolocation = Number(zipPos.replace(/\D/g,''));
@@ -26,7 +28,6 @@ router.get("/location/:latlng", function(req, res){
     }
   })
 })
-
 
 
 router.get('/findPet/:geolocation', function (req, res){
