@@ -10,7 +10,7 @@ window.onload = function(event){
       console.log("geolocation successful")
     },
     "error" : function(){
-      console.log("geolocation failed")
+      console.log("geolocation failed");
     }
   })
 }
