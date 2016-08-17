@@ -27,6 +27,13 @@ router.get('/findPet/:geolocation', function (req, res){
     if (!error && response.statusCode == 200) {
       var pet_data =[];
       var data = JSON.parse(body);
+      if (!data){
+        pet_data.push("Name not available");
+        pet_data.push('http://thefanspage.com/wp-content/themes/fearless/images/missing-image-640x360.png');
+        pet_data.push('No description available.');
+        pet_data.push(Math.floor(Math.random()*300000));
+        pet_data.push('https://www.petfinder.com')
+      } else {
       //name
      if (data.petfinder.pet.name.$t){
       pet_data.push(data.petfinder.pet.name.$t)
@@ -46,16 +53,20 @@ router.get('/findPet/:geolocation', function (req, res){
         pet_data.push('No description available.')
       };
       //id
-      var id = parseInt(data.petfinder.pet.id.$t)
-      pet_data.push(id);
+      if (data.petfinder.pet.id.$t){
+        var id = parseInt(data.petfinder.pet.id.$t)
+        pet_data.push(id);
+      } else {
+        pet_data.push(Math.floor(Math.random()*300000))
+      }
       //link
       pet_data.push('https://www.petfinder.com/petdetail/'+data.petfinder.pet.id.$t);
       // console.log(pet_data)
       db.save_pet(pet_data);
       res.send(pet_data)
       };
+    }
   });
-
 });
 
 module.exports = router;
