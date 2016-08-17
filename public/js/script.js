@@ -7,6 +7,9 @@ window.onload = function(){
     "method" : "GET",
     "success" : function(){
       console.log("geolocation successful")
+    },
+    "error" : function(){
+      console.log("geolocation failed")
     }
   })
 }
