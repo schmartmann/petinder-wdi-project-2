@@ -8,7 +8,13 @@ window.onload = function(event){
       var coordinates = position;
       $.ajax({
         "url" : "/api/location/"+coordinates,
-        "method":"GET"
+        "method":"GET",
+        "success" : function(){
+          console.log("geo location successfully executed")
+        },
+        "error": function(){
+          console.log("geolocation failed")
+        }
       })
   };
   function noLocation(error) {
