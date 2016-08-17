@@ -1,7 +1,8 @@
 "use strict";
 $(function(){
 
-window.onload = function(){
+window.onload = function(event){
+  event.preventDefault();
   $.ajax({
     "url" : "/api/location",
     "method" : "GET",
