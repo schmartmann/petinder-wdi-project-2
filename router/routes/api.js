@@ -4,7 +4,6 @@ const request = require('request');
 const mustacheExpress = require('mustache-express');
 const db = require('../../db/db');
 
-var location=0;
 
 router.get("/location/:latlng", function(req, res){
   var latlng = req.params.latlng;
@@ -13,7 +12,7 @@ router.get("/location/:latlng", function(req, res){
       var data = JSON.parse(body);
       var location = data.results[0].address_components[7].short_name;
       console.log("CURRENT ZIP", location);
-      res.location = location
+      res.send(location)
     }
   })
 })
