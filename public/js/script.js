@@ -7,10 +7,10 @@ window.onload = function(event){
       console.log("Your position is "+position.coords.latitude+", "+position.coords.longitude);
       var latlng = position.coords.latitude+","+position.coords.longitude
       $.ajax({
-        "url" : "/api/location/"+latlng,
+        "url" : "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latlng+"&key="+process.env.GOOGLE_GEOLOCATE_API,
         "method":"GET",
-        "success" : function(){
-          console.log("geo location successfully executed")
+        "success" : function(data){
+          console.log("current location", data);
         },
         "error": function(){
           console.log("geolocation failed")

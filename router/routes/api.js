@@ -4,22 +4,6 @@ const request = require('request');
 const mustacheExpress = require('mustache-express');
 const db = require('../../db/db');
 
-var location;
-
-router.get('/location/:latlng', function(req, res){
-  console.log(req.params.latlng);
-  var latlng = req.params.latlng;
-  request('https://maps.googleapis.com/maps/api/geocode/json?latlng='+latlng+'&key='+process.env.GOOGLE_GEOLOCATE_API,
-  function(error, response, body){
-    if (!error && response.statusCode == 200) {
-      var data = body;
-      res.send(data)
-    }
-  })
-})
-
-
-
 
 router.get('/findPet/:location', function (req, res){
   var location = req.params.location
