@@ -14,6 +14,7 @@ window.onload = function(event){
         "success" : function(location_data){
           console.log("current location", location_data);
           location = location_data;
+          debugger
               $.ajax({
                 "url" : "/api/findPet/"+location,
                 "method" : "GET",
