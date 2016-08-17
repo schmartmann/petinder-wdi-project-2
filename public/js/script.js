@@ -3,8 +3,6 @@ $(function(){
 
 console.log("CURRENTLY LOCATED AT", location)
 
-$("#pet-card").hide();
-
 $("#find-pets-button").on("click", function(event){
   event.preventDefault();
   function alertMyPosition(position) {
@@ -23,7 +21,6 @@ $("#find-pets-button").on("click", function(event){
                 "url" : "/api/findPet/"+geolocation,
                 "method" : "GET",
                 "success" : function(pet_data){
-                  $("#pet-card").show();
                   var pet_id = pet_data[3];
                   // debugger;
                     $.ajax({
