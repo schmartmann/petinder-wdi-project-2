@@ -1,18 +1,17 @@
 "use strict";
 $(function(){
 
+function alertMyPosition(position) {
+    alert("Your position is " + position.coords.latitude + ", " + position.coords.longitude);
+}
+
+function noLocation(error) {
+    alert("No location info available. Error code: " + error.code);
+}
+
 window.onload = function(event){
   event.preventDefault();
-  $.ajax({
-    "url" : "/api/location",
-    "method" : "GET",
-    "success" : function(){
-      console.log("geolocation successful")
-    },
-    "error" : function(){
-      console.log("geolocation failed");
-    }
-  })
+  $.geolocation.get({win: alertMyPosition, fail: noLocation});
 }
 
 
