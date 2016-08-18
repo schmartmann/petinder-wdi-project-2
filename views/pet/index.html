@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
   <link rel="stylesheet" href="/css/style.css">
   <title>Petinder</title>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/jquery.geolocation.js"></script>
+  <!-- <script> you are in the middle of implementing jquery UI draggable  -->
  </head>
 <body class="indigo lighten-5">
   <nav class="blue lighten-2">
@@ -20,6 +24,13 @@
     </div>
   </nav>
 <div class="container">
+<!-- also try to add mustache template so
+that the card only appears when there's
+a valid pet_obj or whatever
+so use like {{#pet_obj}} at the top of the card
+and {{/pet_obj}} at the  bottom of the car
+and then {{^pet_obj}} where i want there to be
+something display when there's no pet obj-->
    <div class="row">
    <br>
     <div class="col s4">
@@ -52,6 +63,3 @@
   <p id="user-name">{{email}}</p>
 </body>
 </html>
-<script src="/js/jquery.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/jquery.geolocation.js"></script>
