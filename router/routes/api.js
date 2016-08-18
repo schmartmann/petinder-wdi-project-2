@@ -14,14 +14,19 @@ router.get("/location/:latlng", function(req, res){
       var formatted_address = data.results[0].formatted_address;
       var addArr = formatted_address.replace(/ /g,'').split(",");
       // if (addArr[length-1] = "Canada"){
-      //   var postalCode = (addArr[addArr.length-2]).split("").splice(2,6);
+      //   var postalCodeArr = (addArr[addArr.length-2]).split("").splice(2,6);
+      //   var postalString = postalCodeArr
       //   var geolocation = postalCode;
-      //   console.log("CURRENT POSTAL CODE", geolocation);
-      //   res.send({"zip":geolocation})
+        //the problem here is that it's going to be hard to represent a
+        //canadian alphanumeric postal code
+        // because it will always be a mix of letters and numbers.
+        //is there a datatype that can have this?
+        //a way to return a string that doesnt have quotes around it?
+        console.log("CURRENT POSTAL CODE", geolocation);
+        res.send({"zip":geolocation})
       // } else {
-      var zipPos = addArr[addArr.length-2];
+      // var zipPos = addArr[addArr.length-2];
       var geolocation = Number(zipPos.replace(/\D/g,''));
-      // var location = data.results[0].address_components[8].short_name;
       console.log("CURRENT ZIP", geolocation);
       res.send({"zip":geolocation})
       // }
